@@ -408,6 +408,9 @@ girara_session_init(girara_session_t* session, const char* sessionname)
   /* enable smooth scroll events */
   gtk_widget_add_events(session->gtk.viewport, GDK_SMOOTH_SCROLL_MASK);
 
+  /* enable kinetic scroll events */
+  gtk_scrolled_window_set_kinetic_scrolling(GTK_SCROLLED_WINDOW(session->gtk.view), true);
+  
   /* load CSS style */
   fill_template_with_values(session);
   g_signal_connect(G_OBJECT(session->private_data->csstemplate), "changed",
